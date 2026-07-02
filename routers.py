@@ -1,6 +1,6 @@
-from aiogram import Router
+from aiogram import Router, F
 from aiogram.filters import CommandStart
-from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 rout = Router()
@@ -24,6 +24,6 @@ async def startcomm(message: Message):
 
     await message.answer_animation(animation="https://tenor.com/ru/view/кот-машет-рукой-котик-машет-ручкой-кот-машет-gif-11689341326546264835", caption='Дарова', reply_markup=builder.as_markup())
 
-@rout.callback_query(event_name="page_home")
-async def mvpstest():
-    print("ура победа")
+@rout.callback_query(F.data == "page_home")
+async def mvpstest(callback: CallbackQuery):
+    await callback.answer("кнопк")
