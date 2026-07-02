@@ -22,7 +22,9 @@ async def startcomm(message: Message):
     builder = InlineKeyboardBuilder()
     builder.attach(InlineKeyboardBuilder.from_markup(markup_start))
 
-    await message.answer_animation(animation="https://tenor.com/ru/view/кот-машет-рукой-котик-машет-ручкой-кот-машет-gif-11689341326546264835", caption='Дарова', reply_markup=builder.as_markup())
+    gifka = 'https://c.tenor.com/ojjiAPMVYwMAAAAd/tenor.gif'
+
+    await message.answer_animation(animation=gifka, caption='Дарова', reply_markup=builder.as_markup())
 
 @rout.callback_query(F.data == "page_home")
 async def mvpstest(callback: CallbackQuery):
